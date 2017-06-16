@@ -22,14 +22,14 @@ NAME=bamboo
 DESC=bamboo
 
 start() {
-        /usr/bin/docker pull aimartin/docker_bamboo:latest
+        /usr/bin/docker pull aimartin/bamboo_docker:latest
         /usr/bin/docker rm --force "bamboo-container"
         /usr/bin/docker create --restart=no --name "bamboo-container" \
     --publish "8085:8085" \
     --privileged \
     --volume "/var/docker/bamboo:/var/atlassian/bamboo" \
     --env "CATALINA_OPTS=" \
-    aimartin/docker_bamboo:latest
+    aimartin/bamboo_docker:latest
         /usr/bin/docker start "bamboo-container"
 }
 
